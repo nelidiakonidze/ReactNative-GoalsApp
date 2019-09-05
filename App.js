@@ -1,22 +1,38 @@
-import React from 'react';
-import {StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  FlatList,
+} from 'react-native';
+
+import GoalItem from './components/GoalItem';
+import GoalInput from './components/GoalInput';
 
 export default function App() {
+  const [courseGoals, setCourseGoals] = useState([]);
+
+  const addGoal = goalTitle => {
+    setCourseGoals(currentGoals => [
+      ...courseGoals,
+      {id: Math.random().toString(), value: goalTitle},
+    ]);
+  };
   return (
-    <View style={{padding: 50}}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignContent: 'center',
-        }}>
-        <TextInput
-          placeholder='Course Goals'
-          style={{width: '80%', borderColor: 'black', borderWidth: 1}}
-        />
-        <Button title='ADD' />
-      </View>
-      <View></View>
+    <View style={styles.screen}>
+      <GoalInput onAddGoal={addGoal} />
+      <FlatList
+        keyExtractor={(item, index) => item.id}
+        data={courseGoals}
+        renderItem={itemData => <GoalItem title={itemData.item.value} />}
+      />
     </View>
   );
 }
+const styles = StyleSheet.create({
+  screen: {
+    padding: 50,
+  },
+});
