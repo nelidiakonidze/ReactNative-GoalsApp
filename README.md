@@ -5,4 +5,4 @@
 
 Run npm install
 
-![image](files/Users/nelidiakonidze/Desktop/photo1.jpg)
+![alt text](files/Users/nelidiakonidze/Desktop/photo1.jpg)
