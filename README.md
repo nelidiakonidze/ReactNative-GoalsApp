@@ -5,4 +5,4 @@
 
 Run npm install
 
-![Homepage](https://imgur.com/Ygpzh7e)
+[Homepage](https://i.imgur.com/Ygpzh7e.jpg)
